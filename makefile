@@ -16,11 +16,12 @@ SRC_FILES = $(UNITY_HOME)/unity.c src/ProductionCode.c test/TestProductionCode.c
 INC_DIRS = -Isrc -I$(UNITY_HOME)
 SYMBOLS = -DTEST
 
-CLEANUP = rm -f build/*.o ; rm -f $(TARGET) ;
+CLEANUP = rm -fr build/
 
 all: clean default
 
 default:
+	mkdir -p build
 	$(CC) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES) -o $(TARGET)
 	./$(TARGET)
 
